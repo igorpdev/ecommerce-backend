@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
-    public List<Usuario> findAllByNomeUsuarioContainingIgnoreCase(String nomeUsuario);
+    public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
 }
