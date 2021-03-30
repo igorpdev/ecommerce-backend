@@ -36,6 +36,11 @@ public class UsuarioController {
         return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nomeUsuario) {
+        return ResponseEntity.ok(repository.findAllByNomeUsuarioContainingIgnoreCase(nomeUsuario));
+    }
+
     @PostMapping
     public ResponseEntity<Usuario> post(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));

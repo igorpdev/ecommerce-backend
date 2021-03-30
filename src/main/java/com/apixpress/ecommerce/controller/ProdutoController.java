@@ -36,6 +36,11 @@ public class ProdutoController {
         return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/tituloProduto/{tituloProduto}")
+    public ResponseEntity<List<Produto>> getByTituloProduto(@PathVariable String tituloProduto) {
+        return ResponseEntity.ok(repository.findAllByTituloProdutoContainingIgnoreCase(tituloProduto));
+    }
+
     @GetMapping("/valorMaior/{valor}")
     public ResponseEntity<List<Produto>> getAllByValorMaior(@PathVariable float valor) {
         return ResponseEntity.ok(repository.findAllByValorGreaterThanEqual(valor));

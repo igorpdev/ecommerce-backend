@@ -10,6 +10,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
+    public List<Produto> findAllByTituloProdutoContainingIgnoreCase(String tituloProduto);
+
     public List<Produto> findAllByValorLessThanEqual(float valor);
 
     public List<Produto> findAllByValorGreaterThanEqual(float valor);
